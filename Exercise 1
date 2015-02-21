@@ -1,0 +1,108 @@
+//Create the tables
+CREATE TABLE EMPLOYEE (FIRST_NAME VARCHAR(15),
+  2  MID_NAME CHAR(2),
+  3  LAST_NAME VARCHAR(15),
+  4  SSN_NUMBER CHAR(9),
+  5  BIRTHDAY DATE,
+  6  ADDRESS VARCHAR2(50),
+  7  SEX CHAR(1),
+  8  SALARY NUMBER(7),
+  9  SUPERVISOR_SSN CHAR(9),
+ 10  DEPARTMENT_NUMBER NUMBER(5));
+
+CREATE TABLE DEPARTMENT (
+  2  DEPT_NAME VARCHAR2(15),
+  3  DEPT_NO NUMBER(5),
+  4  MANAGERSSN CHAR(9),
+  5  MANAGESTARTDATE DATE);
+
+
+CREATE TABLE PROJECT(
+  2  PROJECTNAME VARCHAR2(15),
+  3  PROJECTNUMBER NUMBER(5),
+  4  PROJECTLOCATION VARCHAR2(15),
+  5  DEPT_NO NUMBER(5));
+  
+//1. Insert the data given above in employee, department and project tables. –b,i 
+//FOR TABLE EMPLOYEE
+INSERT INTO EMPLOYEE VALUES('Doug',  'E',  'Gilbert',  554433221,  '09-JUN-60',  '11 S 59 E, Salt Lake City, UT',  'M',  80000,  NULL , 3);
+INSERT INTO EMPLOYEE VALUES('Joyce', NULL,   'PAN',  543216789,  '07-FEB-78',  '35 S 18 E, Salt Lake City, UT',  'F',  70000,  NULL,  2);  
+INSERT INTO EMPLOYEE VALUES('Frankin',  'T',  'Wong',  333445555,  '08-DEC-45',  '638 Voss, Houston, TX',  'M',  40000,  554433221,  5);  
+INSERT INTO EMPLOYEE VALUES('Jennifer',  'S',  'Wallace',  987654321,  '20-JUN-31',  '291 Berry, Bellaire, TX',  'F',  43000,  554433221,  4);  
+INSERT INTO EMPLOYEE VALUES('Johny', 'B',  'Smith',  123456789,  '09-JAN-55',  '731 Fondren, Houston, TX',  'M',  30000,  333445555,  5);  
+INSERT INTO EMPLOYEE VALUES('Ramesh',  'K',  'Narayan',  666884444,  '15-SEP-52',  '975 Fire Oak, Humble, TX',  'M',  38000,  333445555,  5);  
+INSERT INTO EMPLOYEE VALUES('Joyce',  'A',  'English',  453453453,  '31-JUL-62',  '5631 Rice, Houston, TX',  'F',  25000,  333445555,  5);  
+INSERT INTO EMPLOYEE VALUES('James',  'E',  'Borg',  888665555,  '10-NOV-27',  '450 Stone, Houston, TX',  'M',  55000,  543216789,  1);  
+INSERT INTO EMPLOYEE VALUES('Alicia',  'J',  'Zelaya',  999887777,  '19-JUL-58',  '3321 Castle, Spring, TX',  'F',  25000,  987654321,  4);  
+INSERT INTO EMPLOYEE VALUES('Ahmad',  'V',  'Jabbar',  987987987,  '29-MAR-59',  '980 Dallas, Houston, TX',  'M',  25000,  987654321,  4);  
+
+
+//FOR TABLE DEPARTMENT
+INSERT INTO DEPARTMENT VALUES('Manufacture',  1,  888665555,  '19-JUN-71');  
+INSERT INTO DEPARTMENT VALUES('Administration',  2,  543216789,  '04-JAN-99');  
+INSERT INTO DEPARTMENT VALUES('Headquarter',  3,  554433221,  '22-SEP-55');
+INSERT INTO DEPARTMENT VALUES('Finance',  4,  987654321,  '01-JAN-85');
+INSERT INTO DEPARTMENT VALUES('Research',  5,  333445555,  '22-MAY-78');
+
+//FOR TABLE PROJECT
+INSERT INTO PROJECT VALUES('ProjectA',  3388,  'Houston',  1  );
+INSERT INTO PROJECT VALUES('ProjectB',  1945,  'Salt Lake City',  3  );
+INSERT INTO PROJECT VALUES('ProjectC',  6688,  'Houston',  5  );
+INSERT INTO PROJECT VALUES('ProjectD',  2423,  'Bellaire',  4  );
+INSERT INTO PROJECT VALUES('ProjectE',  7745, 'Sugarland',  5  );
+INSERT INTO PROJECT VALUES('ProjectF',  1566,  'Salt Lake City',  3  );
+INSERT INTO PROJECT VALUES('ProjectG',  1234,  'New York',  2  );
+INSERT INTO PROJECT VALUES('ProjectH',  3467,  'Stafford',  4  );
+INSERT INTO PROJECT VALUES('ProjectI',  4345,  'Chicago',  1  );
+INSERT INTO PROJECT VALUES('ProjectJ',  2212,  'San Francisco'.  2 );
+
+//2. Retrieve all the employees’ information for a particular department number 
+SELECT * FROM EMPLOYEE WHERE DEPARTMENT_NUMBER=1;
+
+//3. Get Employee name along with his SSN and Supervisor SSN.
+SELECT FIRST_NAME, MID_NAME, LAST_NAME, SSN_NUMBER, SUPERVISOR_SSN FROM EMPLOYEE;
+
+//4.Retrieve the employee names whose bdate is ’29-MAR-1959’.
+SELECT FIRST_NAME, LAST_NAME, BIRTHDAY FROM EMPLOYEE WHERE BIRTHDAY='29-MAR-1959';
+
+//5. Get salaries of the employees without duplications.
+SELECT DISTINCT SALARY, FIRST_NAME, LAST_NAME FROM EMPLOYEE;
+
+//6. Retrieve the MgrSSN, MgrStartDate of the manager of ‘Research’ department.
+SELECT MANAGERSSN, MANAGESTARTDATE FROM DEPARTMENT WHERE DEPARTMENT_NAME='Research';
+
+//7. Change the department number of an employee having fname as ‘Joyce’ to 3
+UPDATE EMPLOYEE SET DEPARTMENT_NUMBER=3 WHERE FIRST_NAME='Joyce';
+
+//8.  Alter Table department add column ContactNo of NUMBER data type and insert values into this column only.
+ALTER TABLE DEPARTMENT ADD CONTACT_NUMBER NUMBER(10);
+UPDATE DEPARTMENT SET CONTACT_NUMBER=1234567890 WHERE DEPT_NO=1;
+UPDATE DEPARTMENT SET CONTACT_NUMBER=1234567890 WHERE DEPT_NO=2;
+UPDATE DEPARTMENT SET CONTACT_NUMBER=1234567890 WHERE DEPT_NO=3;
+UPDATE DEPARTMENT SET CONTACT_NUMBER=1234567890 WHERE DEPT_NO=4;
+UPDATE DEPARTMENT SET CONTACT_NUMBER=1234567890 WHERE DEPT_NO=5;
+
+9. Change table department by modifying the size of field ContactNo.
+ALTER TABLE DEPARTMENT MODIFY DEPT_NO NUMBER(11);
+
+10. Modify the field name ContactNo of departments table to MobileNo.
+ALTER TABLE DEPARTMENT RENAME COLUMN CONTACT_NUMBER TO MOBILENO
+
+11. Change name of Table Department to DEPT.
+ CREATE TABLE COPYOF_DEPT AS
+  2  SELECT *
+  3  FROM DEPARTMENT;
+  
+12. Alter Table department by removing column MobileNo.
+ALTER TABLE DEPARTMENT DROP COLUMN CONTACT_NO;
+
+13. Create a table COPYOFDEPT as a copy of the table DEPT.
+CREATE TABLE COPYOF_DEPT AS
+  2  SELECT *
+  3  FROM DEPARTMENT;
+  
+14. Remove the rows from COPYOF DEPT table with department number as 5.
+DELETE FROM COPYOF_DEPT WHERE DEPARTMENT_NUMBER=5;
+
+15. Remove COPYOF DEPT table.
+DROP TABLE COPYOF_DEPT;
