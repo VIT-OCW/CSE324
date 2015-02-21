@@ -1,3 +1,7 @@
+/*
+Added by Abhishek
+*/
+
 //Create the tables
 CREATE TABLE EMPLOYEE (FIRST_NAME VARCHAR(15),
   2  MID_NAME CHAR(2),
@@ -82,27 +86,25 @@ UPDATE DEPARTMENT SET CONTACT_NUMBER=1234567890 WHERE DEPT_NO=3;
 UPDATE DEPARTMENT SET CONTACT_NUMBER=1234567890 WHERE DEPT_NO=4;
 UPDATE DEPARTMENT SET CONTACT_NUMBER=1234567890 WHERE DEPT_NO=5;
 
-9. Change table department by modifying the size of field ContactNo.
+//9. Change table department by modifying the size of field ContactNo.
 ALTER TABLE DEPARTMENT MODIFY DEPT_NO NUMBER(11);
 
-10. Modify the field name ContactNo of departments table to MobileNo.
+//10. Modify the field name ContactNo of departments table to MobileNo.
 ALTER TABLE DEPARTMENT RENAME COLUMN CONTACT_NUMBER TO MOBILENO
 
-11. Change name of Table Department to DEPT.
- CREATE TABLE COPYOF_DEPT AS
-  2  SELECT *
-  3  FROM DEPARTMENT;
-  
-12. Alter Table department by removing column MobileNo.
+//11. Change name of Table Department to DEPT
+ALTER TABLE DEPARMTENT RENAME TO DEPT;
+
+//12. Alter Table department by removing column MobileNo.
 ALTER TABLE DEPARTMENT DROP COLUMN CONTACT_NO;
 
-13. Create a table COPYOFDEPT as a copy of the table DEPT.
+//13. Create a table COPYOFDEPT as a copy of the table DEPT.
 CREATE TABLE COPYOF_DEPT AS
   2  SELECT *
   3  FROM DEPARTMENT;
   
-14. Remove the rows from COPYOF DEPT table with department number as 5.
+//14. Remove the rows from COPYOF DEPT table with department number as 5.
 DELETE FROM COPYOF_DEPT WHERE DEPARTMENT_NUMBER=5;
 
-15. Remove COPYOF DEPT table.
+//15. Remove COPYOF DEPT table.
 DROP TABLE COPYOF_DEPT;
