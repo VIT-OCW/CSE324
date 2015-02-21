@@ -40,7 +40,7 @@ Table Name: Project
 Table name: Employee
 
 |FName|Middle name|LName|SSN|BDate|Address|Sex|Salary|SuperSSN|DepNo|
-|--------|--|---------|----------|----------|-------------------------------|--|------|----------|-|
+|:------:|:-:|:-------:|:-------:|:--------:|:-----------------------------:|:-:|:---:|:--------:|:-:|
 |Doug    | E|  Gilbert| 554433221| 09-JUN-60| 11 S 59 E, Salt Lake City, UT |M |80000 |NULL      |3|
 |Frankin | T|  Wong   | 333445555| 08-DEC-45| 638 Voss, Houston, TX         |M |40000 |554433221 |5|
 |Jennifer| S|  Wallace| 987654321| 20-JUN-31| 291 Berry, Bellaire, TX       |F |43000 |554433221 |4|
@@ -50,14 +50,15 @@ Table name: Employee
 |James   | E|  Borg   | 888665555| 10-NOV-27| 450 Stone, Houston, TX        |M |55000 |543216789 |1|
 |Alicia  | J|  Zelaya | 999887777| 19-JUL-58| 3321 Castle, Spring, TX       |F |25000 |987654321 |4|
 |Ahmad   | V|  Jabbar | 987987987| 29-MAR-59| 980, Dallas, Houston, TX      |M |25000 |987654321 |4|
-|Joyce   |  |  PAN    | 543216789| 07-FEB-78| 35 S 18 E, Salt Lake City, UT |F |70000 |NULL      |2|
+|Joyce   |NULL|  PAN    | 543216789| 07-FEB-78| 35 S 18 E, Salt Lake City, UT |F |70000 |NULL      |2|
 
 
 Data for Department:
-|DName| DepNo| MgrSSN| MgrStartDate|
-|-----|-----|---------|---------|
-|Manufacture| 1| 888665555| 19-JUN-71|
+
+|DName|DepNo|MgrSSN|MgrStartDate|
+|:------------:|:-:|:-------:|:--------:|
+|Manufacture   | 1| 888665555| 19-JUN-71|
 |Administration| 2| 543216789| 04-JAN-99|
-|Headquarter| 3| 554433221| 22-SEP-55|
-|Finance| 4| 987654321| 01-JAN-85|
-|Research| 5| 333445555| 22-MAY-78|
+|Headquarter   | 3| 554433221| 22-SEP-55|
+|Finance       | 4| 987654321| 01-JAN-85|
+|Research      | 5| 333445555| 22-MAY-78|
