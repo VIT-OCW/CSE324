@@ -81,6 +81,7 @@ Data for Project:
 
 
 Exercise-I: (outcome: b,i, c and k)
+
 1. Insert the data given above in employee, department and project tables. –b,i
 2. Retrieve all the employees’ information for a particular department number - k
 3. Get Employee name along with his SSN and Supervisor SSN. - k
@@ -89,7 +90,7 @@ Exercise-I: (outcome: b,i, c and k)
 6. Retrieve the MgrSSN, MgrStartDate of the manager of ‘Research’ department. - k
 7. Change the department number of an employee having fname as ‘Joyce’ to 3 – b,i
 8. Alter Table department add column ContactNo of NUMBER data type and insert
-values into this column only. – b,i
+   values into this column only. – b,i
 9. Change table department by modifying the size of field ContactNo. – b,i
 10. Modify the field name ContactNo of departments table to MobileNo. – b,i
 11. Change name of Table Department to DEPT. - c
