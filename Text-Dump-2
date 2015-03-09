@@ -1,0 +1,653 @@
+SQL> SELECT FIRST_NAME, MID_NAME, LAST_NAME
+  2  FROM EMPLOYEE
+  3  WHERE SALARY>25000;
+
+FIRST_NAME      MI LAST_NAME                                                    
+--------------- -- ---------------                                              
+Doug            E  Gilbert                                                      
+Joyce              PAN                                                          
+Frankin         T  Wong                                                         
+Jennifer        S  Wallace                                                      
+Johny           B  Smith                                                        
+Ramesh          K  Narayan                                                      
+James           E  Borg                                                         
+
+SQL> SELECT FIRST_NAME, MID_NAME, LAST_NAME
+  2  FROM EMPLOYEE
+  3  WHERE SALARY>25000 AND SEX='M';
+
+FIRST_NAME      MI LAST_NAME                                                    
+--------------- -- ---------------                                              
+Doug            E  Gilbert                                                      
+Frankin         T  Wong                                                         
+Johny           B  Smith                                                        
+Ramesh          K  Narayan                                                      
+James           E  Borg                                                         
+
+SQL> SELECT FIRST_NAME, MID_NAME, LAST_NAME
+  2  FROM EMPLOYEE
+  3  WHERE SALARY>25000 AND SEX='F';
+
+FIRST_NAME      MI LAST_NAME                                                    
+--------------- -- ---------------                                              
+Joyce              PAN                                                          
+Jennifer        S  Wallace                                                      
+
+SQL> SELECT FIRST_NAME, MID_NAME, LAST_NAME
+  2  FROM EMPLOYEE
+  3  WHERE SALARY BETWEEN 30000 AND 70000;
+
+FIRST_NAME      MI LAST_NAME                                                    
+--------------- -- ---------------                                              
+Joyce              PAN                                                          
+Frankin         T  Wong                                                         
+Jennifer        S  Wallace                                                      
+Johny           B  Smith                                                        
+Ramesh          K  Narayan                                                      
+James           E  Borg                                                         
+
+6 rows selected.
+
+SQL> SELECT FIRST_NAME, LAST_NAME
+  2  FROM EMPLOYEE
+  3  WHERE SUPERVISOR_SSN IS NULL;
+
+FIRST_NAME      LAST_NAME                                                       
+--------------- ---------------                                                 
+Doug            Gilbert                                                         
+Joyce           PAN                                                             
+
+SQL> DESCRIBE EMPLOYEE
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ FIRST_NAME                                NOT NULL VARCHAR2(15)
+ MID_NAME                                           CHAR(2)
+ LAST_NAME                                 NOT NULL VARCHAR2(15)
+ SSN_NUMBER                                NOT NULL CHAR(9)
+ BIRTHDAY                                           DATE
+ ADDRESS                                            VARCHAR2(50)
+ SEX                                                CHAR(1)
+ SALARY                                             NUMBER(7)
+ SUPERVISOR_SSN                                     CHAR(9)
+ DEPT_NO                                            NUMBER(5)
+
+SQL> SELECT FIRST_NAME, LAST_NAME, BIRTHDAY
+  2  FROM EMPLOYEE;
+
+FIRST_NAME      LAST_NAME       BIRTHDAY                                        
+--------------- --------------- ---------                                       
+Doug            Gilbert         09-JUN-60                                       
+Joyce           PAN             07-FEB-78                                       
+Frankin         Wong            08-DEC-45                                       
+Jennifer        Wallace         20-JUN-31                                       
+Johny           Smith           09-JAN-55                                       
+Ramesh          Narayan         15-SEP-52                                       
+Joyce           English         31-JUL-62                                       
+James           Borg            10-NOV-27                                       
+Alicia          Zelaya          19-JUL-58                                       
+Ahmad           Jabbar          29-MAR-59                                       
+
+10 rows selected.
+
+SQL> SELECT FIRST_NAME, LAST_NAME
+  2  FROM EMPLOYEE
+  3  WHERE BIRTHDAY<'01-JAN-78';
+
+FIRST_NAME      LAST_NAME                                                       
+--------------- ---------------                                                 
+Doug            Gilbert                                                         
+Frankin         Wong                                                            
+Jennifer        Wallace                                                         
+Johny           Smith                                                           
+Ramesh          Narayan                                                         
+Joyce           English                                                         
+James           Borg                                                            
+Alicia          Zelaya                                                          
+Ahmad           Jabbar                                                          
+
+9 rows selected.
+
+SQL> SELECT FIRST_NAME, LAST_NAME, BIRTHDAY
+  2  FROM EMPLOYEE
+  3  WHERE BIRTHDAY<'01-JAN-78';
+
+FIRST_NAME      LAST_NAME       BIRTHDAY                                        
+--------------- --------------- ---------                                       
+Doug            Gilbert         09-JUN-60                                       
+Frankin         Wong            08-DEC-45                                       
+Jennifer        Wallace         20-JUN-31                                       
+Johny           Smith           09-JAN-55                                       
+Ramesh          Narayan         15-SEP-52                                       
+Joyce           English         31-JUL-62                                       
+James           Borg            10-NOV-27                                       
+Alicia          Zelaya          19-JUL-58                                       
+Ahmad           Jabbar          29-MAR-59                                       
+
+9 rows selected.
+
+SQL> SELECT FIRST_NAME
+  2  FROM EMPLOYEE
+  3  WHERE FIRST_NAME LIKE 'J____';
+
+FIRST_NAME                                                                      
+---------------                                                                 
+Joyce                                                                           
+Johny                                                                           
+Joyce                                                                           
+James                                                                           
+
+SQL> SELECT FIRST_NAME, MID_NAME, LAST_NAME
+  2  FROM EMPLOYEE
+  3  WHERE MID_NAME IS NULL;
+
+no rows selected
+
+SQL> SELECT FIRST_NAME, MID_NAME, LAST_NAME
+  2  FROM EMPLOYEE;
+
+FIRST_NAME      MI LAST_NAME                                                    
+--------------- -- ---------------                                              
+Doug            E  Gilbert                                                      
+Joyce              PAN                                                          
+Frankin         T  Wong                                                         
+Jennifer        S  Wallace                                                      
+Johny           B  Smith                                                        
+Ramesh          K  Narayan                                                      
+Joyce           A  English                                                      
+James           E  Borg                                                         
+Alicia          J  Zelaya                                                       
+Ahmad           V  Jabbar                                                       
+
+10 rows selected.
+
+SQL> SELECT FIRST_NAME, MID_NAME, LAST_NAME
+  2  FROM EMPLOYEE
+  3  WHERE MID_NAME IS NULL;
+
+no rows selected
+
+SQL> SELECT FIRST_NAME, LAST_NAME, ADDRESS
+  2  FROM EMPLOYEE
+  3  WHERE SEX='M' AND ADDRESS LIKE '%HOUSTON%';
+
+no rows selected
+
+SQL> SELECT FIRST_NAME, LAST_NAME, ADDRESS
+  2  FROM EMPLOYEE;
+
+FIRST_NAME      LAST_NAME                                                       
+--------------- ---------------                                                 
+ADDRESS                                                                         
+--------------------------------------------------                              
+Doug            Gilbert                                                         
+11 S 59 E, Salt Lake City, UT                                                   
+                                                                                
+Joyce           PAN                                                             
+35 S 18 E, Salt Lake City, UT                                                   
+                                                                                
+Frankin         Wong                                                            
+638 Voss, Houston, TX                                                           
+                                                                                
+
+FIRST_NAME      LAST_NAME                                                       
+--------------- ---------------                                                 
+ADDRESS                                                                         
+--------------------------------------------------                              
+Jennifer        Wallace                                                         
+291 Berry, Bellaire, TX                                                         
+                                                                                
+Johny           Smith                                                           
+731 Fondren, Houston, TX                                                        
+                                                                                
+Ramesh          Narayan                                                         
+975 Fire Oak, Humble, TX                                                        
+                                                                                
+
+FIRST_NAME      LAST_NAME                                                       
+--------------- ---------------                                                 
+ADDRESS                                                                         
+--------------------------------------------------                              
+Joyce           English                                                         
+5631 Rice, Houston, TX                                                          
+                                                                                
+James           Borg                                                            
+450 Stone, Houston, TX                                                          
+                                                                                
+Alicia          Zelaya                                                          
+3321 Castle, Spring, TX                                                         
+                                                                                
+
+FIRST_NAME      LAST_NAME                                                       
+--------------- ---------------                                                 
+ADDRESS                                                                         
+--------------------------------------------------                              
+Ahmad           Jabbar                                                          
+980 Dallas, Houston, TX                                                         
+                                                                                
+
+10 rows selected.
+
+SQL> SELECT FIRST_NAME, LAST_NAME, ADDRESS
+  2  FROM EMPLOYEE
+  3  WHERE SEX='M' AND ADDRESS LIKE '%Houston%';
+
+FIRST_NAME      LAST_NAME                                                       
+--------------- ---------------                                                 
+ADDRESS                                                                         
+--------------------------------------------------                              
+Frankin         Wong                                                            
+638 Voss, Houston, TX                                                           
+                                                                                
+Johny           Smith                                                           
+731 Fondren, Houston, TX                                                        
+                                                                                
+James           Borg                                                            
+450 Stone, Houston, TX                                                          
+                                                                                
+
+FIRST_NAME      LAST_NAME                                                       
+--------------- ---------------                                                 
+ADDRESS                                                                         
+--------------------------------------------------                              
+Ahmad           Jabbar                                                          
+980 Dallas, Houston, TX                                                         
+                                                                                
+
+SQL> DESCRIBE DEPARTMENT
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPT_NAME                                          VARCHAR2(15)
+ DEPT_NO                                            NUMBER(5)
+ MANAGERSSN                                         CHAR(9)
+ MANAGESTARTDATE                                    DATE
+ CONTACT_NO                                         NUMBER(10)
+
+SQL> SELECT DEPT_NAME
+  2  FROM DEPARTMENT
+  3  WHERE DEPT_NAME LIKE '%e';
+
+DEPT_NAME                                                                       
+---------------                                                                 
+Manufacture                                                                     
+Finance                                                                         
+
+SQL> SELECT FIRST_NAME, SUPERVISOR_SSN
+  2  FROM EMPLOYEE
+  3  WHERE SUPERVISOR_SSN IN (554433221, 333445555);
+
+FIRST_NAME      SUPERVISO                                                       
+--------------- ---------                                                       
+Frankin         554433221                                                       
+Jennifer        554433221                                                       
+Johny           333445555                                                       
+Ramesh          333445555                                                       
+Joyce           333445555                                                       
+
+SQL> SELECT UPPER(DEPT_NAME)
+  2  FROM DEPARTMENT;
+
+UPPER(DEPT_NAME                                                                 
+---------------                                                                 
+MANUFACTURE                                                                     
+ADMINISTRATION                                                                  
+HEADQUARTER                                                                     
+FINANCE                                                                         
+RESEARCH                                                                        
+
+SQL> SELECT LOWER(DEPT_NAME)
+  2  FROM DEPARTMENT;
+
+LOWER(DEPT_NAME                                                                 
+---------------                                                                 
+manufacture                                                                     
+administration                                                                  
+headquarter                                                                     
+finance                                                                         
+research                                                                        
+
+SQL> SELECT TABLE_NAME FROM USER_TABLES;
+
+TABLE_NAME                                                                      
+------------------------------                                                  
+DEPARTMENT                                                                      
+DEPT_LOC                                                                        
+PATIENT                                                                         
+PROJECT                                                                         
+EMPLOYEE                                                                        
+
+SQL> DESC EMPLOYEE
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ FIRST_NAME                                NOT NULL VARCHAR2(15)
+ MID_NAME                                           CHAR(2)
+ LAST_NAME                                 NOT NULL VARCHAR2(15)
+ SSN_NUMBER                                NOT NULL CHAR(9)
+ BIRTHDAY                                           DATE
+ ADDRESS                                            VARCHAR2(50)
+ SEX                                                CHAR(1)
+ SALARY                                             NUMBER(7)
+ SUPERVISOR_SSN                                     CHAR(9)
+ DEPT_NO                                            NUMBER(5)
+
+SQL> DESC PROJECT
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PROJECT_NAME                                       VARCHAR2(15)
+ PROJECT_NUMBER                                     NUMBER(5)
+ PROJECT_LOCATION                                   VARCHAR2(15)
+ DEPARTMENT_NUMBER                                  NUMBER(5)
+
+SQL> DROP TABLE PATIENT;
+
+Table dropped.
+
+SQL> DESC DEPARTMENT
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPT_NAME                                          VARCHAR2(15)
+ DEPT_NO                                            NUMBER(5)
+ MANAGERSSN                                         CHAR(9)
+ MANAGESTARTDATE                                    DATE
+ CONTACT_NO                                         NUMBER(10)
+
+
+SQL> SELECT ADD_MONTHS(MANAGESTARTDATE, 2)
+  2  FROM DEPARTMENT;
+
+ADD_MONTH                                                                       
+---------                                                                       
+19-AUG-71                                                                       
+04-MAR-99                                                                       
+22-NOV-55                                                                       
+01-MAR-85                                                                       
+22-JUL-78                                                                       
+
+SQL> SELECT ROUND((MONTHS_BETWEEN(SYSDATE, BIRTHDAY)/12), 2)
+  2  FROM EMPLOYEE;
+
+ROUND((MONTHS_BETWEEN(SYSDATE,BIRTHDAY)/12),2)                                  
+----------------------------------------------                                  
+                                          54.7                                  
+                                         37.04                                  
+                                          69.2                                  
+                                         83.67                                  
+                                         60.12                                  
+                                         62.43                                  
+                                         52.56                                  
+                                         87.28                                  
+                                         56.59                                  
+                                          55.9                                  
+
+10 rows selected.
+
+SQL> SELECT FIRST_NAME, ROUND((MONTHS_BETWEEN(SYSDATE, BIRTHDAY)/12), 2)
+  2  FROM EMPLOYEE;
+
+FIRST_NAME      ROUND((MONTHS_BETWEEN(SYSDATE,BIRTHDAY)/12),2)                  
+--------------- ----------------------------------------------                  
+Doug                                                      54.7                  
+Joyce                                                    37.04                  
+Frankin                                                   69.2                  
+Jennifer                                                 83.67                  
+Johny                                                    60.12                  
+Ramesh                                                   62.43                  
+Joyce                                                    52.56                  
+James                                                    87.28                  
+Alicia                                                   56.59                  
+Ahmad                                                     55.9                  
+
+10 rows selected.
+
+SQL> SELECT LAST_DAY(MANAGESTARTDATE)
+  2  FROM DEPARTMENT;
+
+LAST_DAY(                                                                       
+---------                                                                       
+30-JUN-71                                                                       
+31-JAN-99                                                                       
+30-SEP-55                                                                       
+31-JAN-85                                                                       
+31-MAY-78                                                                       
+
+SQL> SELECT MANAGESTARTDATE,LAST_DAY(MANAGESTARTDATE)
+  2  FROM DEPARTMENT;
+
+MANAGESTA LAST_DAY(                                                             
+--------- ---------                                                             
+19-JUN-71 30-JUN-71                                                             
+04-JAN-99 31-JAN-99                                                             
+22-SEP-55 30-SEP-55                                                             
+01-JAN-85 31-JAN-85                                                             
+22-MAY-78 31-MAY-78                                                             
+
+SQL> SELECT MANAGESTARTDATE+1, MANAGESTARTDATE-1
+  2  FROM DEPARTMENT;
+
+MANAGESTA MANAGESTA                                                             
+--------- ---------                                                             
+20-JUN-71 18-JUN-71                                                             
+05-JAN-99 03-JAN-99                                                             
+23-SEP-55 21-SEP-55                                                             
+02-JAN-85 31-DEC-84                                                             
+23-MAY-78 21-MAY-78                                                             
+
+
+
+
+
+
+SQL> SELECT SUBSTR('RAMANA',1,4)
+  2  FROM DUAL;
+
+SUBS                                                                            
+----                                                                            
+RAMA                                                                            
+
+SQL> SELECT SUBSTR('RAMANA',2,4)
+  2  FROM DUAL;
+
+SUBS                                                                            
+----                                                                            
+AMAN                                                                            
+
+SQL> SELECT SUBSTR(ADDRESS, 5, 7)
+  2  FROM EMPLOYEE;
+
+SUBSTR(                                                                         
+-------                                                                         
+ 59 E,                                                                          
+ 18 E,                                                                          
+Voss, H                                                                         
+Berry,                                                                          
+Fondren                                                                         
+Fire Oa                                                                         
+ Rice,                                                                          
+Stone,                                                                          
+ Castle                                                                         
+Dallas,                                                                         
+
+10 rows selected.
+
+SQL> SELECT REPLACE('RAMANA', 'NA', 'SRI'
+  2  )
+  3  FROM DUAL;
+
+REPLACE                                                                         
+-------                                                                         
+RAMASRI                                                                         
+
+
+SQL> SELECT LENGTH(DEPT_NAME)
+  2  FROM DEPARTMENT;
+
+LENGTH(DEPT_NAME)                                                               
+-----------------                                                               
+               11                                                               
+               14                                                               
+               11                                                               
+                7                                                               
+                8                                                               
+
+
+
+SQL> SELECT TO_CHAR (SYSDATE, 'DDth "OF" fmmonth yyyy')
+  2  from dual;
+
+TO_CHAR(SYSDATE,'DDTH"                                                          
+----------------------                                                          
+21ST OF february 2015                                                           
+
+
+SQL> SELECT TO_CHAR (SYSDATE, 'DDth  fmmonth yyyy')
+  2  from dual;
+
+TO_CHAR(SYSDATE,'DDT                                                            
+--------------------                                                            
+21ST  february 2015                                                             
+
+SQL> SELECT ADD_MONTHS(SYSDATE, 8)
+  2  FROM DUAL;
+
+ADD_MONTH                                                                       
+---------                                                                       
+21-OCT-15                                                                       
+
+SQL> SELECT NEXT_DAY(SYSDATE, 'Friday')
+  2  FROM DUAL;
+
+NEXT_DAY(                                                                       
+---------                                                                       
+27-FEB-15                                                                       
+
+SQL> DESC PROJECT
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PROJECT_NAME                                       VARCHAR2(15)
+ PROJECT_NUMBER                                     NUMBER(5)
+ PROJECT_LOCATION                                   VARCHAR2(15)
+ DEPARTMENT_NUMBER                                  NUMBER(5)
+
+
+SQL> SELECT RPAD(PROJECT_LOCATION,LENGTH(PROJECT_LOCATION)+3, '***')
+  2  FROM PROJECT;
+
+RPAD(PROJECT_LOCATION,LENGTH(PROJECT_LOCATION)+3,'***')                         
+--------------------------------------------------------------------------------
+Houston***                                                                      
+Salt Lake City***                                                               
+Houston***                                                                      
+Bellaire***                                                                     
+Sugarland***                                                                    
+Salt Lake City***                                                               
+New York***                                                                     
+Stafford***                                                                     
+Chicago***                                                                      
+San Francisco***                                                                
+
+10 rows selected.
+
+SQL> SELECT PROJECT_NAME
+  2  FROM PROJECT;
+
+PROJECT_NAME                                                                    
+---------------                                                                 
+project valuesA                                                                 
+project valuesB                                                                 
+project valuesC                                                                 
+project valuesD                                                                 
+project valuesE                                                                 
+project valuesF                                                                 
+project valuesG                                                                 
+project valuesH                                                                 
+project valuesI                                                                 
+project valuesJ                                                                 
+
+10 rows selected.
+
+SQL> UPDATE PROJECT SET PROJECT_NAME='projectA'
+  2  WHERE PROJECT_NAME LIKE 'project valuesA';
+
+1 row updated.
+
+SQL> UPDATE PROJECT SET PROJECT_NAME='projectB'
+  2  WHERE PROJECT_NAME LIKE 'project valuesB';
+
+1 row updated.
+
+SQL> UPDATE PROJECT SET PROJECT_NAME='projectC'
+  2  WHERE PROJECT_NAME LIKE 'project valuesC';
+
+1 row updated.
+
+SQL> UPDATE PROJECT SET PROJECT_NAME='projectD'
+  2  WHERE PROJECT_NAME LIKE 'project valuesD';
+
+1 row updated.
+
+SQL> UPDATE PROJECT SET PROJECT_NAME='projectE'
+  2  WHERE PROJECT_NAME LIKE 'project valuesE';
+
+1 row updated.
+
+SQL> UPDATE PROJECT SET PROJECT_NAME='projectF'
+  2  WHERE PROJECT_NAME LIKE 'project valuesF';
+
+1 row updated.
+
+SQL> UPDATE PROJECT SET PROJECT_NAME='projectG'
+  2  WHERE PROJECT_NAME LIKE 'project valuesG';
+
+1 row updated.
+
+SQL> UPDATE PROJECT SET PROJECT_NAME='projectH'
+  2  WHERE PROJECT_NAME LIKE 'project valuesH';
+
+1 row updated.
+
+SQL> UPDATE PROJECT SET PROJECT_NAME='projectI'
+  2  WHERE PROJECT_NAME LIKE 'project valuesI';
+
+1 row updated.
+
+SQL> UPDATE PROJECT SET PROJECT_NAME='projectJ'
+  2  WHERE PROJECT_NAME LIKE 'project valuesJ';
+
+1 row updated.
+
+SQL> SELECT SUBSTR(PROJECT_NAME, 7, 1)
+  2  FROM PROJECT;
+
+S                                                                               
+-                                                                               
+t                                                                               
+t                                                                               
+t                                                                               
+t                                                                               
+t                                                                               
+t                                                                               
+t                                                                               
+t                                                                               
+t                                                                               
+t                                                                               
+
+10 rows selected.
+
+SQL> SELECT SUBSTR(PROJECT_NAME, 8, 1)
+  2  FROM PROJECT;
+
+S                                                                               
+-                                                                               
+A                                                                               
+B                                                                               
+C                                                                               
+D                                                                               
+E                                                                               
+F                                                                               
+G                                                                               
+H                                                                               
+I                                                                               
+J                                                                               
+
+10 rows selected.
+
+SQL> SPOOL OFF
