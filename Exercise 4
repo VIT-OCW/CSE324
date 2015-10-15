@@ -1,0 +1,32 @@
+//variable names may vary
+
+//1. How many different departments are there in the ‘employee’ table?
+SQL> select count(distinct depno) from Employee;
+
+//2. For each department display the minimum and maximum employee salaries 
+SQL> select min(salary),max(salary) from employee;
+
+//3. Print the average annual salary.
+SQL> select avg(salary*12) from employee;
+
+//4. Count the number of employees over 30 age. 
+SQL> select count(ssn) from employee where (abs(extract(year from sysdate)-(extract(year from dob)))>30);
+
+//5. Print the Department name and average salary of each department. 
+SQL> select depname, avg(salary) from employee group by depno;
+
+//6. Display the department name which contains more than 30 employees. 
+SQL>select depname from department, employee where department.depno=employee.depno group by depname having count(ssn>30);
+
+//7. Calculate the average salary of employees by department and age 
+SQL> select distinct depno,months_between(sysdate,dob)/12,avg(salary) from employee group by depno,months_between(sysdate,dob)/12;
+
+//8. Count separately the number of employees in the finance and research department.
+SQL> select count(ssn) from employee where depno =(select depno from dept where depname='Finance');
+SQL> select count(ssn) from employee where depno=(select depno from department where depname ='Research');
+
+//9. List out the employees based on their seniority. 
+SQL> select fname,lname,months_between(sysdate,dob)/12 from employee order by months_between(sysdate,dob)/12 desc;
+
+//10. List out the employees who works in ‘manufacture’ department group by first name
+SQL> select fname,lname,ssn from employee where depno=(select depno from department where depname='Manufacture');
