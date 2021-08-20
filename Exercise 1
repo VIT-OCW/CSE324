@@ -58,7 +58,7 @@ INSERT INTO PROJECT VALUES('ProjectF',  1566,  'Salt Lake City',  3  );
 INSERT INTO PROJECT VALUES('ProjectG',  1234,  'New York',  2  );
 INSERT INTO PROJECT VALUES('ProjectH',  3467,  'Stafford',  4  );
 INSERT INTO PROJECT VALUES('ProjectI',  4345,  'Chicago',  1  );
-INSERT INTO PROJECT VALUES('ProjectJ',  2212,  'San Francisco'.  2 );
+INSERT INTO PROJECT VALUES('ProjectJ',  2212,  'San Francisco',  2 );
 
 //2. Retrieve all the employees’ information for a particular department number 
 SELECT * FROM EMPLOYEE WHERE DEPARTMENT_NUMBER=1;
