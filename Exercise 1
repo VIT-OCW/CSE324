@@ -33,7 +33,7 @@ INSERT INTO EMPLOYEE VALUES('Doug',  'E',  'Gilbert',  554433221,  '09-JUN-60', 
 INSERT INTO EMPLOYEE VALUES('Joyce', NULL,   'PAN',  543216789,  '07-FEB-78',  '35 S 18 E, Salt Lake City, UT',  'F',  70000,  NULL,  2);  
 INSERT INTO EMPLOYEE VALUES('Frankin',  'T',  'Wong',  333445555,  '08-DEC-45',  '638 Voss, Houston, TX',  'M',  40000,  554433221,  5);  
 INSERT INTO EMPLOYEE VALUES('Jennifer',  'S',  'Wallace',  987654321,  '20-JUN-31',  '291 Berry, Bellaire, TX',  'F',  43000,  554433221,  4);  
-INSERT INTO EMPLOYEE VALUES('Johny', 'B',  'Smith',  123456789,  '09-JAN-55',  '731 Fondren, Houston, TX',  'M',  30000,  333445555,  5);  
+INSERT INTO EMPLOYEE VALUES('John', 'B',  'Smith',  123456789,  '09-JAN-55',  '731 Fondren, Houston, TX',  'M',  30000,  333445555,  5);  
 INSERT INTO EMPLOYEE VALUES('Ramesh',  'K',  'Narayan',  666884444,  '15-SEP-52',  '975 Fire Oak, Humble, TX',  'M',  38000,  333445555,  5);  
 INSERT INTO EMPLOYEE VALUES('Joyce',  'A',  'English',  453453453,  '31-JUL-62',  '5631 Rice, Houston, TX',  'F',  25000,  333445555,  5);  
 INSERT INTO EMPLOYEE VALUES('James',  'E',  'Borg',  888665555,  '10-NOV-27',  '450 Stone, Houston, TX',  'M',  55000,  543216789,  1);  
